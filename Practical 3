@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 5
+int top = -1, inp_arr[SIZE];
+void push();
+void pop();
+void peep();
+void change();
+void display();
+void main() {
+int ch;
+while (1) {
+printf("\nOption 1: For Push operation\nOption 2: For Pop operation\nOption 3: For Peep operation\nOption 4: For Change operation\nOption 5: For Display operation\n");
+printf("Enter choice: ");
+scanf("%d", &ch);
+switch (ch) {
+case 1:
+push();
+break;
+case 2:
+pop();
+break;
+case 3:
+peep();
+break;
+case 4:
+change();
+break;
+case 5:
+display();
+break;
+case 0:
+exit(0);
+default:
+printf("\nInvalid choice entered! Please enter valid choice\n");
+}
+}
+}
+void push() {
+int data;
+printf("Enter the data: ");
+scanf("%d", &data);
+if (top == SIZE - 1) {
+printf("Stack overflow\n");
+} else {
+top = top + 1;
+inp_arr[top] = data;
+printf("Entered value = %d, inp_arr[%d]\n", data, top);
+}
+}
+void pop() {
+if (top == -1) {
+printf("Stack underflow\n");
+} else {
+printf("Deleted value = %d, inp_arr[%d]\n", inp_arr[top], top);
+top--;
+}
+}
+void change() {
+int v1, v2;
+// v1 = position, v2 = element
+printf("Enter position: ");
+scanf("%d", &v1);
+printf("Enter value to change: ");
+scanf("%d", &v2);
+if (top - v1 == -1) {
+    printf("Stack underflow\n");
+} else {
+inp_arr[top - v1] = v2;
+printf("Changed value = %d\n", v2);
+}
+}
+void peep() {
+if (top - 1 == -1) {
+printf("Value of top-most element: %d\n", inp_arr[top]);
+} else {
+printf("Value of top-most element: %d, top = %d\n", inp_arr[top], top);
+}
+}
+void display() {
+int i;
+printf("Elements: ");
+for (i = top; i >= 0; i--) {
+    printf("%d ", inp_arr[i]);
+}
+}
+

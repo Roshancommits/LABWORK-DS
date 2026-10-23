@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+void swap (int a, int b);
+void SwapByRef (int *, int *);
+
+void main ( )
+{
+    int a = 5 , b = 10 ;
+    int * PtrA , * PtrB ;
+    PtrA = & a ;
+    PtrB = & b ;
+
+    printf ("Value of A = %d , B = %d", a , b) ;
+    swap (a , b) ;
+    printf ("\n Value of A = %d, B = %d after swapping call By value ", a , b) ;
+
+    SwapByRef (PtrA , PtrB) ;
+    printf ("\n Value of A = %d , B = %d after swapping call By Reference ", a , b) ;
+}
+
+void swap (int x , int y)
+{
+    x = x + y ;
+    y = x - y ;
+    x = x - y ;
+}
+
+void SwapByRef (int *p , int *q)
+{
+    int t ;
+    t = *p ;
+    *p = *q ;
+    *q = t ;
+}
